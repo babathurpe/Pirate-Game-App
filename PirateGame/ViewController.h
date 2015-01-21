@@ -13,6 +13,11 @@
 //instance variables
 @property (nonatomic) CGPoint currentPoint;
 @property (strong, nonatomic) NSArray *tiles;
+@property (nonatomic) NSInteger health;
+@property (nonatomic) NSInteger damage;
+@property (strong, nonatomic) NSString *weapon;
+@property (strong, nonatomic) NSString *armor;
+@property (strong, nonatomic) NSMutableArray *characterStats;
 
 //IBOutlets
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -35,6 +40,20 @@
 - (IBAction)eastBtnPressed:(UIButton *)sender;
 - (IBAction)resetBtnPressed:(id)sender;
 
+//Method to set default character stata
+//-(void) setCharacterStats: (int)health damage:(int) damage weapon:(NSString*) weapon armor:(NSString *) armor;
+-(void) setCharacterStats;
+-(void) atTile2;
+-(void) atTile3;
+-(void) atTile4;
+-(void) atTile5;
+-(void) atTile6;
+-(void) atTile7;
+-(void) atTile8;
+-(void) atTile9;
+-(void) atTile10;
+-(void) atTile11;
+-(void) atTile12;
 
 
 @end

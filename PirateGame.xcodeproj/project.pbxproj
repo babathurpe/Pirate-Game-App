@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52126FCB1A6997A100F1BC20 /* Game-Icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52126FCA1A6997A100F1BC20 /* Game-Icon.jpg */; };
 		529E67411A67355E00FBF9C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 529E67401A67355E00FBF9C5 /* main.m */; };
 		529E67441A67355E00FBF9C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 529E67431A67355E00FBF9C5 /* AppDelegate.m */; };
 		529E67471A67355E00FBF9C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529E67461A67355E00FBF9C5 /* ViewController.m */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52126FCA1A6997A100F1BC20 /* Game-Icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Game-Icon.jpg"; sourceTree = "<group>"; };
 		529E673B1A67355E00FBF9C5 /* PirateGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PirateGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529E673F1A67355E00FBF9C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		529E67401A67355E00FBF9C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		529E673E1A67355E00FBF9C5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				52126FCA1A6997A100F1BC20 /* Game-Icon.jpg */,
 				529E676D1A674E2900FBF9C5 /* Background Images */,
 				529E673F1A67355E00FBF9C5 /* Info.plist */,
 				529E67401A67355E00FBF9C5 /* main.m */,
@@ -253,6 +256,7 @@
 			files = (
 				529E67791A674FED00FBF9C5 /* start-sail.jpg in Resources */,
 				529E674A1A67355E00FBF9C5 /* Main.storyboard in Resources */,
+				52126FCB1A6997A100F1BC20 /* Game-Icon.jpg in Resources */,
 				529E67781A674FED00FBF9C5 /* ship1.png in Resources */,
 				529E674F1A67355E00FBF9C5 /* LaunchScreen.xib in Resources */,
 				529E67751A674FED00FBF9C5 /* pirate-1.jpg in Resources */,
@@ -472,6 +476,7 @@
 				529E67601A67355E00FBF9C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		529E67611A67355E00FBF9C5 /* Build configuration list for PBXNativeTarget "PirateGameTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +485,7 @@
 				529E67631A67355E00FBF9C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

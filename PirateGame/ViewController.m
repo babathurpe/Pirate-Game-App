@@ -27,6 +27,8 @@
     //Update Tile to current point at app load - 0,0.
     [self updateTile];
     [self updateButtons];
+    [self setCharacterStats];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,6 +39,10 @@
 #pragma ButtonActions
 
 - (IBAction)actionBtnPressed:(UIButton *)sender {
+    if(self.currentPoint.x == 0 && self.currentPoint.y ==1 ){
+        [self atTile2];
+    }
+        
 }
 
 - (IBAction)northBtnPressed:(UIButton *)sender {
@@ -65,10 +71,11 @@
 
 - (IBAction)resetBtnPressed:(id)sender {
     self.currentPoint = CGPointMake(0, 0);
-    self.healthLabel.text = @"50";
-    self.damageLabel.text = @"No Damage";
-    self.armorLabel.text = @"No Shield";
-    self.weaponLabel.text = @"No Weapons";
+    [self setCharacterStats];
+//    self.healthLabel.text = @"50";
+//    self.damageLabel.text = @"No Damage";
+//    self.armorLabel.text = @"No Shield";
+//    self.weaponLabel.text = @"No Weapons";
 }
 
 
@@ -86,6 +93,64 @@
     self.eastBtn.hidden = [self tileExistsAtPoint: CGPointMake(self.currentPoint.x + 1, self.currentPoint.y)];
     self.southBtn.hidden = [self tileExistsAtPoint: CGPointMake(self.currentPoint.x, self.currentPoint.y - 1)];
     self.northBtn.hidden = [self tileExistsAtPoint: CGPointMake(self.currentPoint.x, self.currentPoint.y + 1)];
+}
+
+//Set Character Stats when application loads
+-(void) setCharacterStats{
+        self.healthLabel.text = @"50";
+        self.damageLabel.text = @"0";
+        self.armorLabel.text = @"Coat";
+        self.weaponLabel.text = @"Hands";
+}
+
+#pragma Tile Actions
+
+//Method definition for what happens in tile 2
+-(void) atTile2{
+    self.armorLabel.text = @"Gun Armory";
+    self.healthLabel.text = @"100";
+    self.damageLabel.text = @"0";
+    self.weaponLabel.text = @"Hands";
+}
+//Method definition for what happens in tile 3
+-(void) atTile3{
+    
+}
+//Method definition for what happens in tile 4
+-(void) atTile4{
+    
+}
+//Method definition for what happens in tile 5
+-(void) atTile5{
+    
+}
+//Method definition for what happens in tile 6
+-(void) atTile6{
+    
+}
+//Method definition for what happens in tile 7
+-(void) atTile7{
+    
+}
+//Method definition for what happens in tile 8
+-(void) atTile8{
+    
+}
+//Method definition for what happens in tile 9
+-(void) atTile9{
+    
+}
+//Method definition for what happens in tile 10
+-(void) atTile10{
+    
+}
+//Method definition for what happens in tile 11
+-(void) atTile11{
+    
+}
+//Method definition for what happens in tile 12
+-(void) atTile12{
+    
 }
 
 //Check to see current point and detemine if user can move north, south, west or east.
