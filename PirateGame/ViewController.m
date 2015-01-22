@@ -66,42 +66,42 @@
         }
         
         if(self.currentPoint.x == 1 && self.currentPoint.y == 1){
-            [self atTile2];
+           //[self atTile2];
             [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
         }
         
         if(self.currentPoint.x == 1 && self.currentPoint.y == 2){
-            [self atTile2];
+            //[self atTile2];
             [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
         }
         
         if(self.currentPoint.x == 2 && self.currentPoint.y == 0){
-            [self atTile2];
+            //[self atTile2];
             [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
         }
         
         if(self.currentPoint.x == 2 && self.currentPoint.y == 1){
-            [self atTile2];
+            //[self atTile2];
             [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
         }
         
         if(self.currentPoint.x == 2 && self.currentPoint.y == 2){
-            [self atTile2];
+            //[self atTile2];
             [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
         }
         
         if(self.currentPoint.x == 3 && self.currentPoint.y == 0){
-            [self atTile2];
+            //[self atTile2];
             [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
         }
         
         if(self.currentPoint.x == 3 && self.currentPoint.y == 1){
-            [self atTile2];
+            //[self atTile2];
             [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
         }
         
         if(self.currentPoint.x == 3 && self.currentPoint.y == 2){
-            [self atTile2];
+            //[self atTile2];
             [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
         }
         
