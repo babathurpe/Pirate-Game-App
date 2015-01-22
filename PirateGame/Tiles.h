@@ -19,4 +19,6 @@
 //button text for each story tile
 @property (strong, nonatomic) NSString *actionBtnName;
 
+@property (strong, nonatomic) UIButton *actionBtn;
+
 @end

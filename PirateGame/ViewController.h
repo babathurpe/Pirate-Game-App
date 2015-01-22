@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSString *weapon;
 @property (strong, nonatomic) NSString *armor;
 @property (strong, nonatomic) NSMutableArray *characterStats;
+@property(nonatomic) NSNumberFormatter *numberFormatter;
+@property (nonatomic) int ActionButtonPressedCount;
 
 //IBOutlets
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;

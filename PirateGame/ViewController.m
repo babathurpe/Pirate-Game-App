@@ -39,11 +39,78 @@
 #pragma ButtonActions
 
 - (IBAction)actionBtnPressed:(UIButton *)sender {
-    if(self.currentPoint.x == 0 && self.currentPoint.y ==1 ){
-        [self atTile2];
-    }
+    //Tiles *tileModel = [[self.tiles objectAtIndex:self.currentPoint.x] objectAtIndex:self.currentPoint.y];
+    NSString *buttonLabel = self.actionBtn.titleLabel.text;
+    
+    if([buttonLabel isEqual:@"Take Action"]){
+        //Pressing only North Button when game starts
+        if(self.currentPoint.x == 0 && self.currentPoint.y == 0){
+            [self atTile1];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
         
+        if(self.currentPoint.x == 0 && self.currentPoint.y == 1){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 0 && self.currentPoint.y == 2){
+            [self atTile3];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        //Pressing only East Button when game starts
+        if(self.currentPoint.x == 1 && self.currentPoint.y == 0){
+            [self atTile2];
+            [self.actionBtn setTitle:@"here" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 1 && self.currentPoint.y == 1){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 1 && self.currentPoint.y == 2){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 2 && self.currentPoint.y == 0){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 2 && self.currentPoint.y == 1){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 2 && self.currentPoint.y == 2){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 3 && self.currentPoint.y == 0){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 3 && self.currentPoint.y == 1){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+        if(self.currentPoint.x == 3 && self.currentPoint.y == 2){
+            [self atTile2];
+            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+        }
+        
+    }
+    //[self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
+    
 }
+
+
 
 - (IBAction)northBtnPressed:(UIButton *)sender {
     self.currentPoint = CGPointMake(self.currentPoint.x, self.currentPoint.y + 1);
@@ -72,10 +139,10 @@
 - (IBAction)resetBtnPressed:(id)sender {
     self.currentPoint = CGPointMake(0, 0);
     [self setCharacterStats];
-//    self.healthLabel.text = @"50";
-//    self.damageLabel.text = @"No Damage";
-//    self.armorLabel.text = @"No Shield";
-//    self.weaponLabel.text = @"No Weapons";
+    //    self.healthLabel.text = @"50";
+    //    self.damageLabel.text = @"No Damage";
+    //    self.armorLabel.text = @"No Shield";
+    //    self.weaponLabel.text = @"No Weapons";
 }
 
 
@@ -84,7 +151,10 @@
     Tiles *tileModel = [[self.tiles objectAtIndex:self.currentPoint.x] objectAtIndex:self.currentPoint.y];
     self.storyLabel.text = tileModel.story;
     self.backgroundImageView.image = tileModel.backgroundImage;
+    //self.actionBtn.titleLabel.text = tileModel.actionBtnName;
+    [self.actionBtn setTitle:@"Take Action" forState:UIControlStateNormal];
 }
+
 
 //Update button visibility to enable users move north, west, south or east
 //E.g - If user is at point (0,0) then the west and south button become hidden unless user moves to the north or east.
@@ -95,29 +165,57 @@
     self.northBtn.hidden = [self tileExistsAtPoint: CGPointMake(self.currentPoint.x, self.currentPoint.y + 1)];
 }
 
+- (void) updateActionButton{
+    
+}
+
 //Set Character Stats when application loads
 -(void) setCharacterStats{
-        self.healthLabel.text = @"50";
-        self.damageLabel.text = @"0";
-        self.armorLabel.text = @"Coat";
-        self.weaponLabel.text = @"Hands";
+    self.healthLabel.text = @"0";
+    self.damageLabel.text = @"0";
+    self.armorLabel.text = @"Nada";
+    self.weaponLabel.text = @"Hands";
 }
 
 #pragma Tile Actions
 
+-(void) atTile1{
+    [self setCharacterStats];
+}
+
 //Method definition for what happens in tile 2
 -(void) atTile2{
     self.armorLabel.text = @"Gun Armory";
-    self.healthLabel.text = @"100";
+    int healthNumber = [self.healthLabel.text intValue] + 50;
+    NSString *newHealth = [NSString stringWithFormat:@"%d", healthNumber];
+    self.healthLabel.text = newHealth;
     self.damageLabel.text = @"0";
-    self.weaponLabel.text = @"Hands";
+    self.weaponLabel.text = @"Guns";
+   // Tiles *tileModel = [[self.tiles objectAtIndex:self.currentPoint.x] objectAtIndex:self.currentPoint.y];
+    //[self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
 }
 //Method definition for what happens in tile 3
 -(void) atTile3{
-    
+    self.armorLabel.text = @"Shield";
+    int healthNumber = [self.healthLabel.text intValue] + 40;
+    NSString *newHealth = [NSString stringWithFormat:@"%d", healthNumber];
+    self.healthLabel.text = newHealth;
+    self.damageLabel.text = @"0";
+    self.weaponLabel.text = @"Sword";
 }
 //Method definition for what happens in tile 4
 -(void) atTile4{
+    self.armorLabel.text = @"Parrot";
+    int healthNumber = [self.healthLabel.text intValue] + 60;
+    NSString *newHealth = [NSString stringWithFormat:@"%d", healthNumber];
+    self.healthLabel.text = newHealth;
+    self.damageLabel.text = @"0";
+    NSString *currentWeapon = self.weaponLabel.text;
+    if ([currentWeapon isEqual: @"Sword"]) {
+        self.weaponLabel.text = @"Guns";
+    } else {
+        self.weaponLabel.text = @"Knife";
+    }
     
 }
 //Method definition for what happens in tile 5
