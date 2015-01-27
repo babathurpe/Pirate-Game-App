@@ -21,14 +21,16 @@
     
     Factory *factory = [[Factory alloc] init];
     self.tiles = [factory tiles];
+    self.character = [factory character];
+    self.boss = [factory boss];
+    
     self.currentPoint = CGPointMake(0, 0);
     //NSLog(@"%f %f", self.currentPoint.x, self.currentPoint.y);
     
     //Update Tile to current point at app load - 0,0.
+    [self updateCharacterStatsForArmor:nil withWeapons:nil withHealth:0];
     [self updateTile];
     [self updateButtons];
-    [self setCharacterStats];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,80 +38,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma ButtonActions
+#pragma mark - ButtonActions
 
 - (IBAction)actionBtnPressed:(UIButton *)sender {
-    //Tiles *tileModel = [[self.tiles objectAtIndex:self.currentPoint.x] objectAtIndex:self.currentPoint.y];
-    NSString *buttonLabel = self.actionBtn.titleLabel.text;
-    
-    if([buttonLabel isEqual:@"Take Action"]){
-        //Pressing only North Button when game starts
-        if(self.currentPoint.x == 0 && self.currentPoint.y == 0){
-            [self atTile1];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 0 && self.currentPoint.y == 1){
-            [self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 0 && self.currentPoint.y == 2){
-            [self atTile3];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        //Pressing only East Button when game starts
-        if(self.currentPoint.x == 1 && self.currentPoint.y == 0){
-            [self atTile2];
-            [self.actionBtn setTitle:@"here" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 1 && self.currentPoint.y == 1){
-           //[self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 1 && self.currentPoint.y == 2){
-            //[self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 2 && self.currentPoint.y == 0){
-            //[self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 2 && self.currentPoint.y == 1){
-            //[self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 2 && self.currentPoint.y == 2){
-            //[self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 3 && self.currentPoint.y == 0){
-            //[self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 3 && self.currentPoint.y == 1){
-            //[self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
-        if(self.currentPoint.x == 3 && self.currentPoint.y == 2){
-            //[self atTile2];
-            [self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-        }
-        
+    Tiles *tile = [[self.tiles objectAtIndex:self.currentPoint.x] objectAtIndex:self.currentPoint.y];
+    if(tile.health == -15){
+        self.boss.bossHealth = self.boss.bossHealth - self.character.damage;
     }
-    //[self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-    
+    [self updateCharacterStatsForArmor:tile.armor withWeapons:tile.weapon withHealth:tile.health];
+    if(self.character.health <= 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Death Message" message:@"You have been killed by the boss. Restart Game." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    } else if (self.boss.bossHealth <= 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You Won!!" message:@"You defeated the Pirate Boss!!!." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    }
+    [self updateTile];
 }
-
 
 
 - (IBAction)northBtnPressed:(UIButton *)sender {
@@ -137,22 +82,24 @@
 }
 
 - (IBAction)resetBtnPressed:(id)sender {
-    self.currentPoint = CGPointMake(0, 0);
-    [self setCharacterStats];
-    //    self.healthLabel.text = @"50";
-    //    self.damageLabel.text = @"No Damage";
-    //    self.armorLabel.text = @"No Shield";
-    //    self.weaponLabel.text = @"No Weapons";
+    self.character = nil;
+    self.boss = nil;
+    [self viewDidLoad];
 }
 
+
+#pragma mark - HelperMethods
 
 //Update tile so the the story can also be updated based on the current tile.
 - (void) updateTile{
     Tiles *tileModel = [[self.tiles objectAtIndex:self.currentPoint.x] objectAtIndex:self.currentPoint.y];
     self.storyLabel.text = tileModel.story;
     self.backgroundImageView.image = tileModel.backgroundImage;
-    //self.actionBtn.titleLabel.text = tileModel.actionBtnName;
-    [self.actionBtn setTitle:@"Take Action" forState:UIControlStateNormal];
+    self.healthLabel.text = [NSString stringWithFormat:@"%i", self.character.health];
+    self.damageLabel.text = [NSString stringWithFormat:@"%i", self.character.damage];
+    self.armorLabel.text = self.character.armor.armorName;
+    self.weaponLabel.text = self.character.weapon.weaponName;
+    [self.actionBtn setTitle:tileModel.actionBtnName forState:UIControlStateNormal];
 }
 
 
@@ -165,9 +112,6 @@
     self.northBtn.hidden = [self tileExistsAtPoint: CGPointMake(self.currentPoint.x, self.currentPoint.y + 1)];
 }
 
-- (void) updateActionButton{
-    
-}
 
 //Set Character Stats when application loads
 -(void) setCharacterStats{
@@ -177,79 +121,7 @@
     self.weaponLabel.text = @"Hands";
 }
 
-#pragma Tile Actions
 
--(void) atTile1{
-    [self setCharacterStats];
-}
-
-//Method definition for what happens in tile 2
--(void) atTile2{
-    self.armorLabel.text = @"Gun Armory";
-    int healthNumber = [self.healthLabel.text intValue] + 50;
-    NSString *newHealth = [NSString stringWithFormat:@"%d", healthNumber];
-    self.healthLabel.text = newHealth;
-    self.damageLabel.text = @"0";
-    self.weaponLabel.text = @"Guns";
-   // Tiles *tileModel = [[self.tiles objectAtIndex:self.currentPoint.x] objectAtIndex:self.currentPoint.y];
-    //[self.actionBtn setTitle:@"Action Taken" forState:UIControlStateNormal];
-}
-//Method definition for what happens in tile 3
--(void) atTile3{
-    self.armorLabel.text = @"Shield";
-    int healthNumber = [self.healthLabel.text intValue] + 40;
-    NSString *newHealth = [NSString stringWithFormat:@"%d", healthNumber];
-    self.healthLabel.text = newHealth;
-    self.damageLabel.text = @"0";
-    self.weaponLabel.text = @"Sword";
-}
-//Method definition for what happens in tile 4
--(void) atTile4{
-    self.armorLabel.text = @"Parrot";
-    int healthNumber = [self.healthLabel.text intValue] + 60;
-    NSString *newHealth = [NSString stringWithFormat:@"%d", healthNumber];
-    self.healthLabel.text = newHealth;
-    self.damageLabel.text = @"0";
-    NSString *currentWeapon = self.weaponLabel.text;
-    if ([currentWeapon isEqual: @"Sword"]) {
-        self.weaponLabel.text = @"Guns";
-    } else {
-        self.weaponLabel.text = @"Knife";
-    }
-    
-}
-//Method definition for what happens in tile 5
--(void) atTile5{
-    
-}
-//Method definition for what happens in tile 6
--(void) atTile6{
-    
-}
-//Method definition for what happens in tile 7
--(void) atTile7{
-    
-}
-//Method definition for what happens in tile 8
--(void) atTile8{
-    
-}
-//Method definition for what happens in tile 9
--(void) atTile9{
-    
-}
-//Method definition for what happens in tile 10
--(void) atTile10{
-    
-}
-//Method definition for what happens in tile 11
--(void) atTile11{
-    
-}
-//Method definition for what happens in tile 12
--(void) atTile12{
-    
-}
 
 //Check to see current point and detemine if user can move north, south, west or east.
 - (BOOL) tileExistsAtPoint: (CGPoint) point{
@@ -259,4 +131,20 @@
         return YES;
     }
 }
+
+- (void) updateCharacterStatsForArmor: (Armor *) armor withWeapons:(Weapon *)weapon withHealth:(int)health {
+    if (armor != nil) {
+        self.character.health = self.character.health - self.character.armor.health + armor.health;
+        self.character.armor = armor;
+    } else if (weapon != nil){
+        self.character.damage = self.character.damage - self.character.weapon.damageNumber + weapon.damageNumber;
+        self.character.weapon = weapon;
+    } else if (health != 0){
+        self.character.health = self.character.health + health;
+    }else{
+        self.character.health = self.character.health + self.character.armor.health;
+        self.character.damage = self.character.damage + self.character.weapon.damageNumber;
+    }
+}
+
 @end

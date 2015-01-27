@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3827DC8A1A77039D004C8247 /* Weapon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3827DC891A77039D004C8247 /* Weapon.m */; };
+		3827DC8D1A7703D9004C8247 /* Armor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3827DC8C1A7703D9004C8247 /* Armor.m */; };
+		3827DC901A770417004C8247 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 3827DC8F1A770417004C8247 /* Character.m */; };
+		3827DC931A770EF0004C8247 /* Boss.m in Sources */ = {isa = PBXBuildFile; fileRef = 3827DC921A770EF0004C8247 /* Boss.m */; };
 		52126FCB1A6997A100F1BC20 /* Game-Icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52126FCA1A6997A100F1BC20 /* Game-Icon.jpg */; };
 		529E67411A67355E00FBF9C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 529E67401A67355E00FBF9C5 /* main.m */; };
 		529E67441A67355E00FBF9C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 529E67431A67355E00FBF9C5 /* AppDelegate.m */; };
@@ -36,6 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3827DC881A77039D004C8247 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weapon.h; sourceTree = "<group>"; };
+		3827DC891A77039D004C8247 /* Weapon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weapon.m; sourceTree = "<group>"; };
+		3827DC8B1A7703D9004C8247 /* Armor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Armor.h; sourceTree = "<group>"; };
+		3827DC8C1A7703D9004C8247 /* Armor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Armor.m; sourceTree = "<group>"; };
+		3827DC8E1A770417004C8247 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		3827DC8F1A770417004C8247 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		3827DC911A770EF0004C8247 /* Boss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boss.h; sourceTree = "<group>"; };
+		3827DC921A770EF0004C8247 /* Boss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Boss.m; sourceTree = "<group>"; };
 		52126FCA1A6997A100F1BC20 /* Game-Icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Game-Icon.jpg"; sourceTree = "<group>"; };
 		529E673B1A67355E00FBF9C5 /* PirateGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PirateGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529E673F1A67355E00FBF9C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -148,6 +160,14 @@
 				529E67661A67424E00FBF9C5 /* Tiles.h */,
 				529E67671A67424E00FBF9C5 /* Tiles.m */,
 				529E676C1A67435200FBF9C5 /* Factory */,
+				3827DC881A77039D004C8247 /* Weapon.h */,
+				3827DC891A77039D004C8247 /* Weapon.m */,
+				3827DC8B1A7703D9004C8247 /* Armor.h */,
+				3827DC8C1A7703D9004C8247 /* Armor.m */,
+				3827DC8E1A770417004C8247 /* Character.h */,
+				3827DC8F1A770417004C8247 /* Character.m */,
+				3827DC911A770EF0004C8247 /* Boss.h */,
+				3827DC921A770EF0004C8247 /* Boss.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -281,9 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3827DC8D1A7703D9004C8247 /* Armor.m in Sources */,
 				529E676B1A67433D00FBF9C5 /* Factory.m in Sources */,
 				529E67471A67355E00FBF9C5 /* ViewController.m in Sources */,
+				3827DC901A770417004C8247 /* Character.m in Sources */,
 				529E67441A67355E00FBF9C5 /* AppDelegate.m in Sources */,
+				3827DC8A1A77039D004C8247 /* Weapon.m in Sources */,
+				3827DC931A770EF0004C8247 /* Boss.m in Sources */,
 				529E67411A67355E00FBF9C5 /* main.m in Sources */,
 				529E67681A67424E00FBF9C5 /* Tiles.m in Sources */,
 			);

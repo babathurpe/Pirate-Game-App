@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Character.h"
+#import "Boss.h"
 
 @interface Factory : NSObject
 
 //Method to return an array of tiles
 -(NSArray *) tiles;
+-(Character *) character;
+-(Boss *) boss;
 
 @end

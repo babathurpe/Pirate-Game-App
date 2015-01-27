@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Weapon.h"
+#import "Armor.h"
 
 //Story tiles.
 @interface Tiles : NSObject
@@ -18,6 +20,9 @@
 @property (strong, nonatomic) UIImage *backgroundImage;
 //button text for each story tile
 @property (strong, nonatomic) NSString *actionBtnName;
+@property (strong, nonatomic) Weapon *weapon;
+@property (strong, nonatomic) Armor *armor;
+@property (nonatomic) int health;
 
 @property (strong, nonatomic) UIButton *actionBtn;
 
